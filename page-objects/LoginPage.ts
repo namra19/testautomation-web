@@ -1,13 +1,19 @@
-import { expect, Page } from '@playwright/test';
-import { loginLocators } from '../locators/loginLocators';
+import { expect, Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 import { URLs } from '../fixtures/urls';
 
 export class LoginPage extends BasePage {
+    readonly page: Page;
+    readonly emailInput: Locator;
+    readonly passwordInput: Locator;
+    readonly loginButton: Locator;
 
     constructor(page: Page) {
         super(page);
         this.page = page;
+        this.emailInput = page.locator('#email');
+        this.passwordInput = page.locator('#password');
+        this.loginButton = page.getByRole('button', { name: 'LOGIN' });
     }
 
     //Navigate to the website
@@ -21,10 +27,10 @@ export class LoginPage extends BasePage {
         await expect(this.page).toHaveTitle(expectedTitle);
     }
     //Verify Login
-    async login(user: string, password: string) {
-        await this.page.fill(loginLocators.userInput, user);
-        await this.page.fill(loginLocators.passwordInput, password);
-        await this.page.click(loginLocators.loginButton);
+    async login(useremail: string, password: string) {
+        await this.emailInput.fill(useremail) ;
+        await this.passwordInput.fill(password);
+        await this.loginButton.click();
     }
 
 }
