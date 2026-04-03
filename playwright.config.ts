@@ -64,7 +64,7 @@ export default defineConfig({
 
   /*  Start your local dev server automatically before tests */
   webServer: {
-    command: 'npx serve -p 3000',   // start your JS website
+    command: 'npx serve -p 3000 TESTAUTOMATION-WEB',   // start your JS website
     port: 3000,                     // port your site runs on
     reuseExistingServer: !process.env.CI, // reuse if already running locally
     timeout: 120 * 1000,            // wait max 2 minutes for server to start
