@@ -1,0 +1,24 @@
+{
+  "name": "testautomation-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/namra19/testautomation-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/namra19/testautomation-web/issues"
+  },
+  "homepage": "https://github.com/namra19/testautomation-web#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.5.0",
+    "playwright": "^1.59.1",
+    "typescript": "^6.0.2"
+  }
+}
