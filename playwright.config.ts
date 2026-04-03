@@ -23,11 +23,6 @@ export default defineConfig({
         headless: true,
       },
      
-  // webServer: {
-  //   command: 'npx serve ../app',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: true,
-  // }, 
 
   /* Configure projects for major browsers */
   projects: [
@@ -67,10 +62,11 @@ export default defineConfig({
     // },
   ],
 
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  /*  Start your local dev server automatically before tests */
+  webServer: {
+    command: 'npx serve -p 3000',   // start your JS website
+    port: 3000,                     // port your site runs on
+    reuseExistingServer: !process.env.CI, // reuse if already running locally
+    timeout: 120 * 1000,            // wait max 2 minutes for server to start
+  },
 });
