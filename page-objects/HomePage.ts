@@ -1,11 +1,15 @@
-import { Page, expect } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 
 export class HomePage {
-  constructor(private page: Page) {}
+    readonly page: Page;
+    readonly contentSection: Locator;
 
-  contentSection = this.page.locator('text=Lorem ipsum');
-
-  async assertUserLoggedIn() {
-    await expect(this.contentSection).toBeVisible();
-  }
+    constructor(page: Page) {
+        this.page = page;
+        this.contentSection = page.locator('text=Lorem ipsum egestas');
+    }
+    //Verify user is logged in
+    async verifyUserIsLoggedIn() {
+        await expect(this.contentSection).toBeVisible();
+    }
 }
