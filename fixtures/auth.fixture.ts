@@ -13,7 +13,7 @@ export const test = base.extend<Fixtures>({
     loginAs: async ({ page }, use) => {
         const loginPage = new LoginPage(page);
 
-        await use(async (userKey: UserKey) => {
+        await use(async (userKey, customPage = page) => {
             const user = users[userKey];
             await loginPage.navigate();
             await loginPage.login(user.email, user.password);
