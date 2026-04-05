@@ -43,4 +43,12 @@ export class LoginPage {
         }
     }
 
+    async getEmailFieldValue(){
+        return await this.emailInput.inputValue();
+    }
+
+      async getPasswordFieldValue(){
+        return await this.passwordInput.inputValue();
+    }
+
 }
