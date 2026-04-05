@@ -28,9 +28,13 @@ export class LoginPage extends BasePage {
     }
     //Verify Login
     async login(useremail: string, password: string) {
-        await this.emailInput.fill(useremail) ;
+        await this.emailInput.fill(useremail);
         await this.passwordInput.fill(password);
         await this.loginButton.click();
+    }
+
+    async assertLoginPageVisible() {
+        await expect(this.loginButton).toBeVisible();
     }
 
 }
