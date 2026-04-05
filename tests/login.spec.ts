@@ -8,7 +8,6 @@ test.describe('Login Tests', () => {
 
     test.beforeEach(async ({ context, page }) => {
         loginPage = new LoginPage(page);
-          await context.clearCookies();
         await loginPage.navigate();
     });
 
@@ -26,6 +25,7 @@ test.describe('Login Tests', () => {
         await expect(page).toHaveURL(URLs.baseURL);
     });
 
+    // Valid login - user 1
     test('User1 Login with valid credentials', async ({ page }) => {
         await loginPage.login(
             users.user1Login.email,
@@ -33,6 +33,7 @@ test.describe('Login Tests', () => {
         );
     });
 
+// Valid login - user 2
     test('User2 Login with valid credentials', async ({ page }) => {
         await loginPage.login(
             users.user2Login.email,
@@ -40,7 +41,7 @@ test.describe('Login Tests', () => {
         );
     });
 
-    //Invalid login
+    //Negative tests for login
     test('Login with invalid credentials', async ({ page }) => {
         await loginPage.login(
             users.invalidEmail.email,
@@ -61,6 +62,5 @@ test.describe('Login Tests', () => {
             users.invalidFormat.password
         );
     });
-
     
 });
