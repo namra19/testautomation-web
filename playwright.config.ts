@@ -13,7 +13,11 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   ...(process.env.CI ? { workers: 1 } : {}),
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['line'],
+    ['html'],
+    ['allure-playwright', { outputFolder: 'allure-results' }]
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use:  {
       //  ...devices['Desktop Chrome'],
@@ -21,6 +25,7 @@ export default defineConfig({
         screenshot: 'only-on-failure',
         trace: 'on-first-retry',
         headless: true,
+        video: "retain-on-failure"
       },
      
 
@@ -31,15 +36,15 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
 
     /* Test against mobile viewports. */
     // {
