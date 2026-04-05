@@ -24,8 +24,23 @@ test.describe('Sign Out Tests', () => {
     test('User stays on login page after clicking back post logout', async ({ page }) => {
         await homePage.clickSignOut();
         await page.goBack();
-       expect(page.url()).not.toBe(URLs.baseURL);
+       expect(page.url()).not.toBe(URLs.baseURL);    
+    });
 
-    
+     test('Credentials should be cleared after logout', async ({ page }) => {
+        await homePage.clickSignOut();
+        await loginPage.assertLoginPageVisible();
+
+        //Assert email and password fields are empty
+        const emailInput = await loginPage.getEmailFieldValue();
+        const passwordInput = await loginPage.getPasswordFieldValue();
+
+        if (emailInput || passwordInput ) {
+            console.log ('Credentials are NOT cleared after logout')
+        }
+
+        expect(emailInput).toBe('');
+        expect(passwordInput).toBe('');
+       
     });
 });
