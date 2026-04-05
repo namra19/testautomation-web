@@ -46,7 +46,6 @@ test.describe('Session Management Test', () => {
     //     const page1 = await context.newPage();
     //     const page2 = await context.newPage();
 
-    //     // 👉 Login using page1 (IMPORTANT)
     //     const loginPage = new LoginPage(page1);
     //     await loginPage.navigate();
     //     await loginPage.login('admin@admin.com', '2020');
