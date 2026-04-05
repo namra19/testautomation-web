@@ -9,7 +9,7 @@ test.describe('Session Management Test', () => {
     });
 
     // Verify user remains logged in after page refresh
-    test('Verify user remains logged in after page refresh', async ({ page }) => {
+    test('@regression Verify user remains logged in after page refresh', async ({ page }) => {
         const home = new HomePage(page);
 
         //Refresh page
@@ -20,7 +20,7 @@ test.describe('Session Management Test', () => {
     });
 
     // Verify user is logged out after session expires
-    test('Verify user is logged out after session expires', async ({ page }) => {
+    test('@smoke Verify user is logged out after session expires', async ({ page }) => {
         const home = new HomePage(page);
         await home.verifyUserIsLoggedIn();
 

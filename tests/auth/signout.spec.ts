@@ -15,19 +15,19 @@ test.describe('Sign Out Tests', () => {
     });
 
     // Verify user can logout successfully
-    test('User can logout successfully', async ({ loginAs, page }) => {
+    test('@smoke User can logout successfully', async ({ loginAs, page }) => {
         await homePage.clickSignOut();
         await loginPage.assertLoginPageVisible();
 
     });
 
-    test('User stays on login page after clicking back post logout', async ({ page }) => {
+    test('@regression User stays on login page after clicking back post logout', async ({ page }) => {
         await homePage.clickSignOut();
         await page.goBack();
        expect(page.url()).not.toBe(URLs.baseURL);    
     });
 
-     test('Credentials should be cleared after logout', async ({ page }) => {
+     test('@regression Credentials should be cleared after logout', async ({ page }) => {
         await homePage.clickSignOut();
         await loginPage.assertLoginPageVisible();
 

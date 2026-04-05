@@ -4,23 +4,17 @@ import { LoginPage } from '../../page-objects/LoginPage';
 
 test.describe('Content Validation Test', () => {
 
-    let loginPage: LoginPage;
-    let homePage: HomePage;
+  // Verify main content is visible and not empty after login
+  test('@smoke Verify main content is visible and not empty after login', async ({ loginAs, page }) => {
+    const loginPage = new LoginPage(page);
+    const homePage = new HomePage(page);
+    await loginAs('adminLogin');
+    const mainContent = homePage.mainContentLocator();
 
-    test.beforeEach(async ({ loginAs, page }) => {
-        loginPage = new LoginPage(page);
-        homePage = new HomePage(page);
-        await loginAs('adminLogin');
-    });
+    await expect(mainContent).toBeVisible();
+    const textContent: string | null = await mainContent.textContent();
+    expect(textContent?.trim().length).toBeGreaterThan(0);
 
-    // Verify main content is visible and not empty after login
-    test('Verify main content is visible and not empty after login', async ({ loginAs, page }) => {
-      const mainContent = homePage.mainContentLocator();
-
-      await expect(mainContent).toBeVisible();
-      const textContent: string | null = await mainContent.textContent();
-      expect(textContent?.trim().length).toBeGreaterThan(0);
-
-    });
+  });
 
 });

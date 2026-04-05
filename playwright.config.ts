@@ -11,7 +11,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
 
   /* Opt out of parallel tests on CI. */
-  ...(process.env.CI ? { workers: 1 } : {}),
+  ...(process.env.CI ? { workers: 4 } : {}),
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['line'],
@@ -66,6 +66,7 @@ export default defineConfig({
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
   ],
+  workers:3,
 
   /*  Start your local dev server automatically before tests */
   webServer: {
