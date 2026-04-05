@@ -4,15 +4,10 @@ import { URLs } from '../../utils/urls';
 
 
 test.describe('Login Tests', () => {
-    let loginPage: LoginPage;
-
-    test.beforeEach(async ({ context, page }) => {
-        loginPage = new LoginPage(page);
-        await loginPage.navigate();
-    });
-
     // Verify website is loaded successfully 
     test('Verify home page opens successfully', async ({ page }) => {
+        const loginPage = new LoginPage(page);
+        await loginPage.navigate();
         await loginPage.verifyTitle('Single Page Application');
     });
 
