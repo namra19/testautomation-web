@@ -1,25 +1,24 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { BasePage } from './BasePage';
-import { URLs } from '../fixtures/urls';
+import { URLs } from '../utils/urls';
 
-export class LoginPage extends BasePage {
+export class LoginPage {
     readonly page: Page;
     readonly emailInput: Locator;
     readonly passwordInput: Locator;
     readonly loginButton: Locator;
+    readonly errorMessage: Locator;
 
     constructor(page: Page) {
-        super(page);
         this.page = page;
         this.emailInput = page.locator('#email');
         this.passwordInput = page.locator('#password');
         this.loginButton = page.getByRole('button', { name: 'LOGIN' });
+        this.errorMessage = page.locator('#error')
     }
 
     //Navigate to the website
     async navigate() {
         await this.page.goto(URLs.baseURL, { waitUntil: 'load' });
-        await this.acceptCookiesIfPresent()
     }
 
     //Verify Page title
@@ -35,6 +34,13 @@ export class LoginPage extends BasePage {
 
     async assertLoginPageVisible() {
         await expect(this.loginButton).toBeVisible();
+    }
+
+    async assertErrorMessageVisible(expectedText?: string) {
+        await expect(this.errorMessage).toBeVisible();
+        if (expectedText) {
+            await expect(this.errorMessage).toHaveText(expectedText)
+        }
     }
 
 }
