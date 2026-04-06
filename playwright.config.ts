@@ -21,7 +21,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use:  {
       //  ...devices['Desktop Chrome'],
-        baseURL: process.env.BASE_URL || 'http://localhost:3000/',
+        baseURL: process.env.BASE_URL,
         screenshot: 'only-on-failure',
         trace: 'on-first-retry',
         headless: true,
@@ -70,7 +70,7 @@ export default defineConfig({
 
   /*  Start your local dev server automatically before tests */
   webServer: {
-    command: 'npx serve -p 3000 TESTAUTOMATION-WEB',   // start your JS website
+    command: 'npx serve -p 3000 build',   // start your JS website
     port: 3000,                     // port your site runs on
     reuseExistingServer: !process.env.CI, // reuse if already running locally
     timeout: 120 * 1000,            // wait max 2 minutes for server to start

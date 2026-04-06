@@ -14,6 +14,7 @@ test.describe('Navigation Bar Tests', () => {
         await nav.clickMenu('Home', URLs.homeURL);
         await nav.clickMenu('Products', URLs.productsURL);
         await nav.clickMenu('Contact', URLs.contactsURL);
+        //Todo Add expect
     });
 
 });

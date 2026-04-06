@@ -2,11 +2,13 @@ import { expect, test } from '../../fixtures/auth.fixture';
 import { HomePage } from '../../page-objects/HomePage';
 import { LoginPage } from '../../page-objects/LoginPage';
 import { URLs } from '../../utils/urls';
+import { users } from '../../utils/testData';
 
 test.describe('Sign Out Tests', () => {
 
     let loginPage: LoginPage;
     let homePage: HomePage;
+    
 
     test.beforeEach(async ({ loginAs, page }) => {
         loginPage = new LoginPage(page);
@@ -24,6 +26,7 @@ test.describe('Sign Out Tests', () => {
     test('@regression User stays on login page after clicking back post logout', async ({ page }) => {
         await homePage.clickSignOut();
         await page.goBack();
+        //Todo Add expect to be login url
        expect(page.url()).not.toBe(URLs.baseURL);    
     });
 
