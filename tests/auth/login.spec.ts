@@ -1,6 +1,7 @@
 import { LoginPage } from '../../page-objects/LoginPage';
 import { test, expect } from '../../fixtures/auth.fixture';
 import { URLs } from '../../utils/urls';
+import AxeBuilder from '@axe-core/playwright';
 
 
 test.describe.parallel('Login Tests', () => {
@@ -45,6 +46,13 @@ test.describe.parallel('Login Tests', () => {
     test('@regression Login with credentials of invalid format', async ({ loginAs }) => {
         await loginAs('invalidFormat');
         //Todo add expect
+    });
+
+    test.only('login page should have no accessibility violations', async ({ page }) => {
+        const loginPage = new LoginPage(page);
+        await loginPage.navigate();
+        const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+        expect(accessibilityScanResults.violations).toEqual([]);
     });
 
 });

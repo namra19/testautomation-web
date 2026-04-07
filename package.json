@@ -19,11 +19,13 @@
   },
   "homepage": "https://github.com/namra19/testautomation-web#readme",
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.1",
     "@playwright/test": "^1.59.1",
     "@types/node": "^25.5.0",
     "allure-commandline": "^2.38.1",
     "allure-playwright": "^3.6.0",
     "playwright": "^1.59.1",
+    "playwright-lighthouse": "^4.0.0",
     "typescript": "^6.0.2"
   },
   "dependencies": {
