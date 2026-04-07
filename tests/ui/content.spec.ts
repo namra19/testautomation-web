@@ -20,7 +20,7 @@ test.describe('Content Validation Test', () => {
 
 
     test.only('Home page should have no accessibility violations', async ({ loginAs, page }) => {
-          await loginAs('adminLogin');
+          await loginAs('user1Login');
         const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
         expect(accessibilityScanResults.violations).toEqual([]);
     });
@@ -32,7 +32,7 @@ test.describe('Content Validation Test', () => {
           headless: true,
           args: [`--remote-debugging-port=${port}`],
         });
-        await loginAs('adminLogin');
+        await loginAs('user1Login');
         const context = await browser.newContext();
 
         // wait for page to fully settle
