@@ -4,6 +4,4 @@ export const URLs = {
     homeURL: 'http://localhost:3000/home',
     productsURL: 'http://localhost:3000/products',
     contactsURL: 'http://localhost:3000/contacts',
-
-
 };

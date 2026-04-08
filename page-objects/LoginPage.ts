@@ -7,6 +7,8 @@ export class LoginPage {
     readonly passwordInput: Locator;
     readonly loginButton: Locator;
     readonly errorMessage: Locator;
+    readonly heroText: Locator;
+
 
     constructor(page: Page) {
         this.page = page;
@@ -14,6 +16,8 @@ export class LoginPage {
         this.passwordInput = page.locator('#password');
         this.loginButton = page.getByRole('button', { name: 'LOGIN' });
         this.errorMessage = page.locator('#error')
+        this.heroText = page.locator('text=Automation doesn\'t stop at testing, it\'s just a beginning!');
+
     }
 
     //Navigate to the website
@@ -21,34 +25,32 @@ export class LoginPage {
         await this.page.goto(URLs.baseURL, { waitUntil: 'load' });
     }
 
-    //Verify Page title
-    async verifyTitle(expectedTitle: string) {
-        await expect(this.page).toHaveTitle(expectedTitle);
-    }
     //Verify Login
     async login(useremail: string, password: string) {
         await this.emailInput.fill(useremail);
         await this.passwordInput.fill(password);
         await this.loginButton.click();
     }
-
-    async assertLoginPageVisible() {
-        await expect(this.loginButton).toBeVisible();
+    
+    getLoginButtonLocator(): Locator {
+        return this.loginButton;
     }
 
-    async assertErrorMessageVisible(expectedText?: string) {
-        await expect(this.errorMessage).toBeVisible();
-        if (expectedText) {
-            await expect(this.errorMessage).toHaveText(expectedText)
-        }
+    getErrorMessageLocator(): Locator {
+        return this.errorMessage;
     }
 
-    async getEmailFieldValue(){
+    //Get the values from the email and password fields to verify that they are cleared after failed login attempts
+    async getEmailFieldValue() {
         return await this.emailInput.inputValue();
     }
 
-      async getPasswordFieldValue(){
+    async getPasswordFieldValue() {
         return await this.passwordInput.inputValue();
+    }
+
+     getHeroTextLocator(): Locator {
+        return this.heroText;
     }
 
 }
