@@ -26,12 +26,12 @@ export const users: Users = {
         password: process.env.ADMIN_PASSWORD!
     },
     user1Login: {
-        email: 'biancunha@gmail.com',
-        password: '123456'
+        email: process.env.USER1_EMAIL!,
+        password: process.env.USER1_PASSWORD!
     },
     user2Login: {
-        email: 'growdev@growdev.com.br',
-        password: 'growdev123',
+        email: process.env.USER2_EMAIL!,
+        password: process.env.USER2_PASSWORD!,
     },
 
     invalidEmail: {

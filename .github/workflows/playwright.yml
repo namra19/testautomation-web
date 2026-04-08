@@ -25,6 +25,10 @@ jobs:
           ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           BASE_URL: ${{ secrets.BASE_URL }}
+          USER1_EMAIL: ${{ secrets.USER1_EMAIL }}
+          USER1_PASSWORD: ${{ secrets.USER1_PASSWORD }}
+          USER2_EMAIL: ${{ secrets.USER2_EMAIL }}
+          USER2_PASSWORD: ${{ secrets.USER2_PASSWORD }}
       run: npx playwright test --reporter=line,allure-playwright
       continue-on-error: true
     - name: Debug Allure results

@@ -70,6 +70,11 @@ npx playwright test tests/login.spec.ts
 ```bash
 npx playwright allure generate --clean
 npx playwright allure open
+allure open allure-report
+
+or serve locally:
+
+npx serve allure-report
 ```
 
 ### Project Structure
