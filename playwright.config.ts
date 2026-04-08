@@ -98,8 +98,8 @@ export default defineConfig({
 
   /* Reporter configuration */
   reporter: [
-    ['line'], 
-    ['html', { open: 'never' }], 
+    // ['line'], 
+    // ['html', { open: 'never' }], 
     ['allure-playwright', { outputFolder: 'allure-results' }]
   ],
 
@@ -119,7 +119,7 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    // Uncomment if you want other browsers
+   // Uncomment if you want other browsers
     // {
     //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] },

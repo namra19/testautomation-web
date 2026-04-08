@@ -8,12 +8,14 @@ export class LoginPage {
     readonly loginButton: Locator;
     readonly errorMessage: Locator;
 
+
     constructor(page: Page) {
         this.page = page;
         this.emailInput = page.locator('#email');
         this.passwordInput = page.locator('#password');
         this.loginButton = page.getByRole('button', { name: 'LOGIN' });
         this.errorMessage = page.locator('#error')
+
     }
 
     //Navigate to the website
@@ -21,21 +23,18 @@ export class LoginPage {
         await this.page.goto(URLs.baseURL, { waitUntil: 'load' });
     }
 
-    //Verify Page title
-    async verifyTitle(expectedTitle: string) {
-        await expect(this.page).toHaveTitle(expectedTitle);
-    }
     //Verify Login
     async login(useremail: string, password: string) {
         await this.emailInput.fill(useremail);
         await this.passwordInput.fill(password);
         await this.loginButton.click();
     }
-
+    //Assert that login page is visible
     async assertLoginPageVisible() {
         await expect(this.loginButton).toBeVisible();
     }
 
+    //Assert that an error message is visible
     async assertErrorMessageVisible(expectedText?: string) {
         await expect(this.errorMessage).toBeVisible();
         if (expectedText) {
@@ -43,11 +42,12 @@ export class LoginPage {
         }
     }
 
-    async getEmailFieldValue(){
+    //Get the values from the email and password fields to verify that they are cleared after failed login attempts
+    async getEmailFieldValue() {
         return await this.emailInput.inputValue();
     }
 
-      async getPasswordFieldValue(){
+    async getPasswordFieldValue() {
         return await this.passwordInput.inputValue();
     }
 

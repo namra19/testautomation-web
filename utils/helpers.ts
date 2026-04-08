@@ -1,7 +1,6 @@
-import { expect, Page, request } from '@playwright/test';
+import { Page } from '@playwright/test';
 import { LoginPage } from '../page-objects/LoginPage'
 import { users } from './testData';
-import { URLs } from './urls';
 
 
 // Generic login function

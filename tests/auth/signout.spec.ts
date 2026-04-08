@@ -8,7 +8,6 @@ test.describe('Sign Out Tests', () => {
 
     let loginPage: LoginPage;
     let homePage: HomePage;
-    
 
     test.beforeEach(async ({ loginAs, page }) => {
         loginPage = new LoginPage(page);
@@ -17,33 +16,37 @@ test.describe('Sign Out Tests', () => {
     });
 
     // Verify user can logout successfully
-    test('@smoke User can logout successfully', async ({ loginAs, page }) => {
+    test('@smoke User can logout successfully', async ({ page}) => {
         await homePage.clickSignOut();
         await loginPage.assertLoginPageVisible();
 
     });
 
-    test('@regression User stays on login page after clicking back post logout', async ({ page }) => {
+    // Verify user cannot navigate back to home page after logout
+    test('@regression User should not be able to navigate back to the home page after logout', async ({ page }) => {
         await homePage.clickSignOut();
+         //User is redirected to login page after clicking back post logout
+        loginPage.assertLoginPageVisible();
+        //User should not be able to navigate back to the home page after logout
         await page.goBack();
-        //Todo Add expect to be login url
-       expect(page.url()).not.toBe(URLs.baseURL);    
+        expect(page.url()).not.toBe(URLs.baseURL);
     });
 
-     test('@regression Credentials should be cleared after logout', async ({ page }) => {
+    // Verify credentials are cleared after logout
+    // This test will fail as the app currently does not clear credentials after logout, needs to be fixed in the app
+    test('@regression Credentials should be cleared after logout', async ({ page }) => {
         await homePage.clickSignOut();
         await loginPage.assertLoginPageVisible();
 
-        //Assert email and password fields are empty
         const emailInput = await loginPage.getEmailFieldValue();
         const passwordInput = await loginPage.getPasswordFieldValue();
 
-        if (emailInput || passwordInput ) {
-            console.log ('Credentials are NOT cleared after logout')
+        if (emailInput || passwordInput) {
+            console.log('Credentials are NOT cleared after logout')
         }
 
         expect(emailInput).toBe('');
         expect(passwordInput).toBe('');
-       
+
     });
 });

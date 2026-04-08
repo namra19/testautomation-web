@@ -4,7 +4,7 @@ import { playAudit } from 'playwright-lighthouse';
 import { chromium } from '@playwright/test';
 import { HomePage } from '../../page-objects/HomePage';
 
-test.describe('Content Validation Test', () => {
+test.describe('Content Validation Tests', () => {
 
   // Verify main content is visible and not empty after login
   test('@smoke Verify main content is visible and not empty after login', async ({ loginAs, page }) => {
@@ -15,17 +15,18 @@ test.describe('Content Validation Test', () => {
     await expect(mainContent).toBeVisible();
     const textContent: string | null = await mainContent.textContent();
     expect(textContent?.trim().length).toBeGreaterThan(0);
-
   });
 
 
-    test.only('Home page should have no accessibility violations', async ({ loginAs, page }) => {
+  // Accessibility test for home page
+    test('@regression Home page should have no accessibility violations', async ({ loginAs, page }) => {
           await loginAs('user1Login');
         const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
         expect(accessibilityScanResults.violations).toEqual([]);
     });
-
-    test.only('lighthouse audit', async ({ loginAs, page }) => {
+    
+    // Lighthouse audit for home page
+    test('@regression lighthouse audit', async ({ loginAs, page }) => {
         const port = 9222;
 
         const browser = await chromium.launch({

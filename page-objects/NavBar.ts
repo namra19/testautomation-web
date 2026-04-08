@@ -13,15 +13,11 @@ export class NavBar {
         };
     }
 
-    //Click a Menu item and verify URL
-    async clickMenu(menuName: keyof typeof this.menus, expectedURL?: string) {
+    //Click a Menu item
+    async clickMenu(menuName: keyof typeof this.menus) {
         const menu = this.menus[menuName];
         if (!menu) throw new Error(`Menu item "${menuName}" not found in NavBar`);
         await menu.click();
-
-        if(expectedURL) {
-            await expect(this.page).toHaveURL(expectedURL);
-        }
     }
 
 }
