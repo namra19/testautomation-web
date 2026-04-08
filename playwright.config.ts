@@ -156,7 +156,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
 
   /* Let Playwright choose optimal workers (based on CPU cores) */
-  workers: undefined, // or process.env.CI ? 4 : undefined for explicit number
+  workers: process.env.CI ? 1 : undefined,
 
   /* Reporter configuration */
  reporter: [
