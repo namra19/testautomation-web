@@ -1,51 +1,48 @@
-export type TestEnv = 'qa';
+require('dotenv').config();
 
-const testEnv = (process.env.TEST_ENV as TestEnv) || 'qa';
-
-const usersByEnv: Record<TestEnv, {
-    adminLogin: { email: string; password: string };
-    user1Login: { email: string; password: string };
-    user2Login: { email: string; password: string };
-    invalidEmail: { email: string; password: string };
-    invalidPassword: { email: string; password: string };
-    emptyCredentials: { email: string; password: string };
-    invalidFormat: { email: string; password: string };
-
-
-}> = {
-    qa: {
-        adminLogin: {
-            email: 'admin@admin.com',
-            password: '2020'
-        },
-        user1Login: {
-            email: 'biancunha@gmail.com',
-            password: '123456'
-        },
-        user2Login: {
-            email: 'growdev@growdev.com.br',
-            password: 'growdev123',
-        },
-
-        invalidEmail: {
-            email: 'wrong@example.com',
-            password: '123456'
-        },
-        invalidPassword: {
-            email: 'admin@admin.com',
-            password: 'wrongpass'
-        },
-        emptyCredentials: {
-            email: '',
-            password: ''
-        },
-        invalidFormat: {
-            email: 'not-an-email',
-            password: '123456'
-        }
-
-    },
-
+type Credentials = {
+    email: string;
+    password: string;
 };
 
-export const users = usersByEnv[testEnv];
+type Users = {
+    adminLogin: Credentials;
+    user1Login: Credentials;
+    user2Login: Credentials;
+    invalidEmail: Credentials;
+    invalidPassword: Credentials;
+    emptyCredentials: Credentials;
+    invalidFormat: Credentials;
+};
+
+export const users: Users = {
+    adminLogin: {
+        email: process.env.ADMIN_EMAIL!,
+        password: process.env.ADMIN_PASSWORD!
+    },
+    user1Login: {
+        email: process.env.USER1_EMAIL!,
+        password: process.env.USER1_PASSWORD!
+    },
+    user2Login: {
+        email: process.env.USER2_EMAIL!,
+        password: process.env.USER2_PASSWORD!,
+    },
+
+    invalidEmail: {
+        email: 'wrong@example.com',
+        password: '123456'
+    },
+    invalidPassword: {
+        email: 'admin@admin.com',
+        password: 'wrongpass'
+    },
+    emptyCredentials: {
+        email: '',
+        password: ''
+    },
+    invalidFormat: {
+        email: 'not-an-email',
+        password: '123456'
+    }
+};
