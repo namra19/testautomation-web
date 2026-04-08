@@ -69,7 +69,7 @@ npx playwright test tests/login.spec.ts
 
 ### Test Reports & Screenshots
 
-- Screenshots and videos are saved on test failures in test-results/.
+- Screenshots are saved on test failures in test-results/.
 - Generate and view Allure reports:
 ```bash
 allure open allure-report
@@ -103,8 +103,8 @@ npx serve allure-report
 ### CI Integration
 
 The test automation framework is fully integrated with **GitHub Actions**.  
-- Tests run automatically on pull requests, merges, or scheduled workflows.  
-- Reports and test results can be viewed in GitHub or via Allure reports. 
+- Tests run automatically on merge to main.
+- Reports and test results can be downloaded from GitHub. 
 
 ## Test Coverage
 - Login Tests: Positive and negative scenarios to validate authentication.
