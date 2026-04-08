@@ -32,11 +32,12 @@ npm install typescript --save-dev
 
 ### Environment Setup
 
-Create a .env file in the root directory:
-
-BASE_URL=https://example.com
-USERNAME=your-username
-PASSWORD=your-password
+- Create a .env file in the root directory:
+```bash
+ADMIN_EMAIL=admin@admin.com
+ADMIN_PASSWORD=2020
+BASE_URL=http://localhost:3000/
+```
 
 ### Running Tests
 ```bash
@@ -71,7 +72,7 @@ npx playwright allure open
 ```
 
 ### Project Structure
-
+```
 ├── playwright.yml.         # CI configuration
 ├── allure-reports/         # Allure reports
 ├── fixtures/               # Reusable setup and teardown
@@ -88,26 +89,26 @@ npx playwright allure open
 ├── tsconfig.json           # TypeScript configuration
 ├── package.json
 └── .env                    # Environment variables
+```
 
 ## Test Coverage
-- ** Login Tests: Positive and negative scenarios to validate authentication.
-- ** Signout Tests: Ensure proper session termination.
-- ** Navigation Tests: Check navigation menu links redirect correctly
-- ** Session Management Tests: Validate session expiry and persistence on refresh.
-- ** Content Validation Tests: Ensure main content is visible and home page is accessible.
-
+- Login Tests: Positive and negative scenarios to validate authentication.
+- Signout Tests: Ensure proper session termination.
+- Navigation Tests: Check navigation menu links redirect correctly
+- Session Management Tests: Validate session expiry and persistence on refresh.
+- Content Validation Tests: Ensure main content is visible and home page is accessible.
 
 ## Notes
 - ** Some tests may intentionally fail due to current application behavior mismatches.
 
 ## Framework Features
-- ** Page Object Model (POM): Clean, maintainable, and reusable code structure.
-- ** Allure Reporting: Generate comprehensive and interactive test reports.
-- ** Parallel Testing: Run tests concurrently for faster execution.
-- ** Cross-Browser Testing: Supports Chromium, Firefox, and WebKit.
-- ** CI Integration: Seamlessly integrates with GitHub Actions for continuous testing.
-- ** Test Tagging: Easily categorize and execute specific test groups (Smoke and Regression).
-- ** Environment Configurations: Easily switch between different environments using .env files.
-- ** Accessibility Testing: Validate web accessibility standards.
-- ** Performance Testing: Measure performance metrics and identify bottlenecks.
-- ** Functional Testing: Verify end-to-end application functionality.
+- Page Object Model (POM): Clean, maintainable, and reusable code structure.
+- Allure Reporting: Generate comprehensive and interactive test reports.
+- Parallel Testing: Run tests concurrently for faster execution.
+- Cross-Browser Testing: Supports Chromium, Firefox, and WebKit.
+- CI Integration: Seamlessly integrates with GitHub Actions for continuous testing.
+- Test Tagging: Easily categorize and execute specific test groups (Smoke and Regression).
+- Environment Configurations: Easily switch between different environments using .env files.
+- Accessibility Testing: Validate web accessibility standards.
+- Performance Testing: Measure performance metrics and identify bottlenecks.
+- Functional Testing: Verify end-to-end application functionality.
