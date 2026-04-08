@@ -1,6 +1,6 @@
 # testautomation-web
 
-This repository contains automated tests for a JavaScript Single Page Application (SPA)
+This repository contains automated tests for a JavaScript Single Page Application.
 
 ## Framework Description
 This is a robust **Playwright + TypeScript** test automation framework for end-to-end testing of web applications. The JavaScript Single Page Application (SPA) under test is included in this repository, so there is no need to set up the app separately. It follows modern automation best practices, ensuring reliability, maintainability, and scalability.
@@ -92,6 +92,12 @@ npx playwright allure open
 ├── package.json
 └── .env                    # Environment variables
 ```
+
+### CI Integration
+
+The test automation framework is fully integrated with **GitHub Actions**.  
+- Tests run automatically on pull requests, merges, or scheduled workflows.  
+- Reports and test results can be viewed in GitHub or via Allure reports. 
 
 ## Test Coverage
 - Login Tests: Positive and negative scenarios to validate authentication.

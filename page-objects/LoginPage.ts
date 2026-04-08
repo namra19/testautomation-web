@@ -7,6 +7,7 @@ export class LoginPage {
     readonly passwordInput: Locator;
     readonly loginButton: Locator;
     readonly errorMessage: Locator;
+    readonly heroText: Locator;
 
 
     constructor(page: Page) {
@@ -15,6 +16,7 @@ export class LoginPage {
         this.passwordInput = page.locator('#password');
         this.loginButton = page.getByRole('button', { name: 'LOGIN' });
         this.errorMessage = page.locator('#error')
+        this.heroText = page.locator('text=Automation doesn\'t stop at testing, it\'s just a beginning!');
 
     }
 

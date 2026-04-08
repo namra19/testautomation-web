@@ -19,6 +19,7 @@ test.describe('Login Tests', () => {
     test('@smoke Verify home page opens successfully', async ({ page }) => {
         await loginPage.navigate();
         await expect(page).toHaveTitle('Single Page Application')
+        await expect(loginPage.heroText).toBeVisible();
         console.log('Home page loaded successfully with title: ' + await page.title());
     });
 
