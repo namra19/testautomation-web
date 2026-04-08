@@ -53,4 +53,15 @@ export class LoginPage {
         return this.heroText;
     }
 
+    async assertLoginPageVisible() {
+        await expect(this.loginButton).toBeVisible();
+    }
+
+    async assertErrorMessageVisible(expectedText?: string) {
+        await expect(this.errorMessage).toBeVisible();
+        if (expectedText) {
+            await expect(this.errorMessage).toHaveText(expectedText)
+        }
+    }
+
 }
