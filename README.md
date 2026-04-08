@@ -1,10 +1,11 @@
 # testautomation-web
 
-This repository contains automated tests for a JavaScript Single Page Application (SPA).
+This repository contains automated tests for a JavaScript Single Page Application (SPA)
 
 ## Framework Description
-This is a robust **Playwright + TypeScript** test automation framework for end-to-end testing of web applications.  
-It follows modern automation best practices, ensuring reliability, maintainability, and scalability.
+This is a robust **Playwright + TypeScript** test automation framework for end-to-end testing of web applications. The JavaScript Single Page Application (SPA) under test is included in this repository, so there is no need to set up the app separately. It follows modern automation best practices, ensuring reliability, maintainability, and scalability.
+
+You can run the tests directly on the included application without setting up a separate server.
 
 ## Getting Started
 
@@ -75,6 +76,7 @@ npx playwright allure open
 ```
 ├── playwright.yml.         # CI configuration
 ├── allure-reports/         # Allure reports
+├── build.                  # Javascript application
 ├── fixtures/               # Reusable setup and teardown
 ├── page-objects/           # Page Object Models
 ├── tests/                  # Test files
@@ -99,7 +101,7 @@ npx playwright allure open
 - Content Validation Tests: Ensure main content is visible and home page is accessible.
 
 ## Notes
-- ** Some tests may intentionally fail due to current application behavior mismatches.
+- Some tests may intentionally fail due to current application behavior mismatches.
 
 ## Framework Features
 - Page Object Model (POM): Clean, maintainable, and reusable code structure.
