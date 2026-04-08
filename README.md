@@ -36,8 +36,12 @@ npm install typescript --save-dev
 - Create a .env file in the root directory:
 ```bash
 ADMIN_EMAIL=admin@admin.com
-ADMIN_PASSWORD=2020
+ADMIN_PASSWORD=****
 BASE_URL=http://localhost:3000/
+USER1_EMAIL=******gmail.com
+USER1_PASSWORD=******
+USER2_EMAIL=******@growdev.com.br
+USER2_PASSWORD=******
 ```
 
 ### Running Tests
@@ -68,8 +72,6 @@ npx playwright test tests/login.spec.ts
 - Screenshots and videos are saved on test failures in test-results/.
 - Generate and view Allure reports:
 ```bash
-npx playwright allure generate --clean
-npx playwright allure open
 allure open allure-report
 
 or serve locally:

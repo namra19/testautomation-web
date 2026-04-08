@@ -7,7 +7,7 @@ import { HomePage } from '../../page-objects/HomePage';
 test.describe('Home Page Content Validation Tests', () => {
 
   // Verify main content is visible and not empty after login
-  test.only('@smoke Verify main content of home page is visible and not empty after login', async ({ loginAs, page }) => {
+  test('@smoke Verify main content of home page is visible and not empty after login', async ({ loginAs, page }) => {
     const homePage = new HomePage(page);
     await loginAs('adminLogin');
     const mainContent = homePage.getMainContentLocator();

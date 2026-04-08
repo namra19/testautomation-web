@@ -1,9 +1,4 @@
-// export type TestEnv = 'qa';
-
-// const testEnv = (process.env.TEST_ENV as TestEnv) || 'qa';
 require('dotenv').config();
-
-
 
 type Credentials = {
     email: string;

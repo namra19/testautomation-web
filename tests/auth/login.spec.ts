@@ -54,7 +54,6 @@ test.describe('Login Tests', () => {
     test('@regression Login with invalid credentials', async ({ loginAs }) => {
         await loginAs('invalidEmail');
         await loginPage.getLoginButtonLocator().isVisible();
-
         console.log('Login failed as expected with invalid email');
         //Tests in CI should not intentionally fail as error message is not visible, needs to be fixed in the app
         await expect(loginPage.getErrorMessageLocator()).toBeVisible();
@@ -64,9 +63,7 @@ test.describe('Login Tests', () => {
     test('@regression Login with empty credentials', async ({ loginAs }) => {
         await loginAs('emptyCredentials');
         await loginPage.getLoginButtonLocator().isVisible();
-
         console.log('Login failed as expected with empty credentials');
-
         //Tests in CI should not intentionally fail as error message is not visible, needs to be fixed in the app
         await expect(loginPage.getErrorMessageLocator()).toBeVisible();
         await expect(loginPage.getErrorMessageLocator()).toHaveText('Please enter valid email')
@@ -75,9 +72,7 @@ test.describe('Login Tests', () => {
     test('@regression Login with credentials of invalid format', async ({ loginAs }) => {
         await loginAs('invalidFormat');
         await loginPage.getLoginButtonLocator().isVisible();
-
         console.log('Login failed as expected with invalid email and password format');
-
         //Tests in CI should not intentionally fail as error message is not visible, needs to be fixed in the app
         await expect(loginPage.getErrorMessageLocator()).toBeVisible();
         await expect(loginPage.getErrorMessageLocator()).toHaveText('Please enter valid email')
