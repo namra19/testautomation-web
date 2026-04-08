@@ -26,7 +26,7 @@ test.describe('Sign Out Tests', () => {
     test('@regression User should not be able to navigate back to the home page after logout', async ({ page }) => {
         await homePage.clickSignOut();
          //User is redirected to login page after clicking back post logout
-        loginPage.assertLoginPageVisible();
+       loginPage.assertLoginPageVisible();
         //User should not be able to navigate back to the home page after logout
         await page.goBack();
         expect(page.url()).not.toBe(URLs.baseURL);

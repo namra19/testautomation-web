@@ -17,6 +17,8 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Clean previous reports
+      run: rm -rf allure-results allure-report playwright-report
     - name: Run Playwright tests
       run: npx playwright test --reporter=line,allure-playwright
       continue-on-error: true

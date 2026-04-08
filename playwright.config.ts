@@ -164,7 +164,7 @@ export default defineConfig({
     ['html', { open: 'never' }],
     ['allure-playwright', {
       outputFolder: 'allure-results',
-      detail: true,    // captures attachments, steps automatically if present
+      detail: false,    // captures attachments, steps automatically if present
       suiteTitle: true
     }],
   ],
@@ -172,10 +172,10 @@ export default defineConfig({
   /* Shared test options */
   use: {
     baseURL: process.env.BASE_URL,
-    screenshot: 'only-on-failure',
-    trace: 'on-first-retry',
+    screenshot: 'off',
+    trace: 'off',
     headless: true,
-    video: 'retain-on-failure',
+    video: 'off',
     actionTimeout: 30_000,
     navigationTimeout: 60_000,
   },
