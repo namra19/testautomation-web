@@ -42,7 +42,6 @@ export class HomePage {
     return this.userIcon;
   }
 
-  //Click SignOut
   async clickSignOut() {
     await this.userIcon.click();
     await this.signOut.click();
