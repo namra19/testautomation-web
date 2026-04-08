@@ -2,7 +2,6 @@ import { Page } from '@playwright/test';
 import { LoginPage } from '../page-objects/LoginPage'
 import { users } from './testData';
 
-
 // Generic login function
 export async function loginAsUser(page: Page, userKey: keyof typeof users) {
     const loginPage = new LoginPage(page);

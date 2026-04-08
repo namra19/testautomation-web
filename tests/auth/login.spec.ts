@@ -3,7 +3,6 @@ import { test, expect } from '../../fixtures/auth.fixture';
 import AxeBuilder from '@axe-core/playwright';
 import { HomePage } from '../../page-objects/HomePage';
 
-
 test.describe('Login Tests', () => {
 
     let loginPage: LoginPage;
