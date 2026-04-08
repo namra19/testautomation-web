@@ -1,4 +1,4 @@
-import { test } from '../../fixtures/auth.fixture';
+import { expect, test } from '../../fixtures/auth.fixture';
 import { HomePage } from '../../page-objects/HomePage';
 import { LoginPage } from '../../page-objects/LoginPage';
 
@@ -18,13 +18,12 @@ test.describe('Session Management Test', () => {
         await page.reload();
 
         //Verify user is still logged in
-        await homePage.verifyUserIsLoggedIn()
+        await expect(homePage.getContentSectionLocator()).toBeVisible();
     });
 
     // Verify user is logged out after session expires
     test('@smoke Verify user is logged out after session expires', async ({ page }) => {
-        const home = new HomePage(page);
-        await home.verifyUserIsLoggedIn();
+         await expect(homePage.getContentSectionLocator()).toBeVisible();
 
         //Simulate session expiration
         await page.context().clearCookies();
@@ -32,14 +31,11 @@ test.describe('Session Management Test', () => {
             localStorage.clear();
             sessionStorage.clear();
         })
-
         //Refresh
         await page.reload();
-
         //Verify user is redirected to login page
-        await loginPage.assertLoginPageVisible()
+        await expect(loginPage.getLoginButtonLocator()).toBeVisible();
     });
-
 });
 
 

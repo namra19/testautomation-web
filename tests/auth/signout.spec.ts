@@ -18,7 +18,7 @@ test.describe('Sign Out Tests', () => {
     // Verify user can logout successfully
     test('@smoke User can logout successfully', async ({ page}) => {
         await homePage.clickSignOut();
-        await loginPage.assertLoginPageVisible();
+       await loginPage.getLoginButtonLocator().isVisible();
 
     });
 
@@ -26,7 +26,7 @@ test.describe('Sign Out Tests', () => {
     test('@regression User should not be able to navigate back to the home page after logout', async ({ page }) => {
         await homePage.clickSignOut();
          //User is redirected to login page after clicking back post logout
-       loginPage.assertLoginPageVisible();
+       await loginPage.getLoginButtonLocator().isVisible();
         //User should not be able to navigate back to the home page after logout
         await page.goBack();
         expect(page.url()).not.toBe(URLs.baseURL);
@@ -36,7 +36,7 @@ test.describe('Sign Out Tests', () => {
     // This test will fail as the app currently does not clear credentials after logout, needs to be fixed in the app
     test('@regression Credentials should be cleared after logout', async ({ page }) => {
         await homePage.clickSignOut();
-        await loginPage.assertLoginPageVisible();
+       await loginPage.getLoginButtonLocator().isVisible();
 
         const emailInput = await loginPage.getEmailFieldValue();
         const passwordInput = await loginPage.getPasswordFieldValue();

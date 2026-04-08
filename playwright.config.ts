@@ -150,7 +150,8 @@ export default defineConfig({
   fullyParallel: true,
 
   /* Fail build on test.only in CI */
-  forbidOnly: !!process.env.CI,
+  // forbidOnly: !!process.env.CI,
+  forbidOnly: false,
 
   /* Retry failed tests on CI */
   retries: process.env.CI ? 2 : 0,

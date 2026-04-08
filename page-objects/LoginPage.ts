@@ -31,17 +31,13 @@ export class LoginPage {
         await this.passwordInput.fill(password);
         await this.loginButton.click();
     }
-    //Assert that login page is visible
-    async assertLoginPageVisible() {
-        await expect(this.loginButton).toBeVisible();
+    
+    getLoginButtonLocator(): Locator {
+        return this.loginButton;
     }
 
-    //Assert that an error message is visible
-    async assertErrorMessageVisible(expectedText?: string) {
-        await expect(this.errorMessage).toBeVisible();
-        if (expectedText) {
-            await expect(this.errorMessage).toHaveText(expectedText)
-        }
+    getErrorMessageLocator(): Locator {
+        return this.errorMessage;
     }
 
     //Get the values from the email and password fields to verify that they are cleared after failed login attempts
@@ -51,6 +47,10 @@ export class LoginPage {
 
     async getPasswordFieldValue() {
         return await this.passwordInput.inputValue();
+    }
+
+     getHeroTextLocator(): Locator {
+        return this.heroText;
     }
 
 }

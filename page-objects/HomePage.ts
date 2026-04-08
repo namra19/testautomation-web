@@ -30,6 +30,21 @@ export class HomePage {
         await expect(this.userIcon).toBeVisible();
     }
 
+    getContentSectionLocator(): Locator {
+        return this.contentSection;
+    }
+    getHomePageLocator(): Locator {
+        return this.contentSection
+    }
+
+    getNavigationBarLocator(): Locator {
+        return this.navigationBar;
+    }
+    
+     getUserIconLocator(): Locator {
+        return this.userIcon;
+    }
+
     //Click SignOut
     async clickSignOut() {
         await this.userIcon.click();
@@ -41,7 +56,7 @@ export class HomePage {
     //     await expect(this.contentBody).toBeVisible();
     // }
 
-     mainContentLocator(): Locator {
+     getMainContentLocator(): Locator {
     return this.page.locator('text=Lorem ipsum egestas'); 
   }
 
